@@ -17,6 +17,11 @@ no_changes() {
 # $3 - Commit details
 change_pulled() {
     echo "Changes pulled: $*"
+    source /home/debian/virtualenvs/pelican/bin/activate
+    cd /home/debian/git/thecrowned.org-pelican/
+    make publish
+    rm -rf /var/www/thecrowned.org/public_html/*
+    cp -r /home/debian/git/thecrowned.org-pelican/output/* /var/www/thecrowned.org/public_html/
 }
 
 # $1 - Git repository name
